@@ -1,0 +1,7 @@
+- name: Check if already installed
+  stat:
+    path: /usr/local/cpanel/whostmgr/docroot/cgi/configserver/cmq
+  register: cmq
+
+- include_tasks: "install.yml"
+  when: not cmq.stat.exists and macklus.configserver.cmq.install|bool == true

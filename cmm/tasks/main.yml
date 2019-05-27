@@ -1,0 +1,7 @@
+- name: Check if already installed
+  stat:
+    path: /usr/local/cpanel/whostmgr/docroot/cgi/configserver/cmm
+  register: cmm
+
+- include_tasks: "install.yml"
+  when: not cmm.stat.exists and macklus.configserver.cmm.install|bool == true

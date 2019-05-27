@@ -1,0 +1,19 @@
+- name: Download cse
+  get_url:
+    url: https://download.configserver.com/cse.tgz
+    dest: /usr/src/cse.tgz
+    mode: 0440
+  when: not cse.stat.exists
+
+- name: Unarchive
+  unarchive:
+    src: /usr/src/cse.tgz
+    dest: /usr/src/
+    remote_src: yes
+  when: not cse.stat.exists
+
+- name: Install
+  command: ./install.sh
+  args:
+    chdir: /usr/src/cse
+    creates: /usr/local/cpanel/whostmgr/docroot/cgi/configserver/cse

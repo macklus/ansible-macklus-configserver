@@ -1,0 +1,25 @@
+- name: Download cmq
+  get_url:
+    url: https://download.configserver.com/cmq.tgz
+    dest: /usr/src/cmq.tgz
+    mode: 0440
+
+- name: Unarchive
+  unarchive:
+    src: /usr/src/cmq.tgz
+    dest: /usr/src/
+    remote_src: yes
+
+- name: Install
+  command: ./install.sh
+  args:
+    chdir: /usr/src/cmq
+    creates: /usr/local/cpanel/whostmgr/docroot/cgi/configserver/cmq
+
+- name: remove installation files
+  file:
+    path: "/usr/src/{{ item }}"
+    state: "absent"
+  with_items:
+    - cmq
+    - cmq.tgz

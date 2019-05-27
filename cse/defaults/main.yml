@@ -1,0 +1,6 @@
+---
+# file: tasks/cse/defaults/main.yml
+macklus:
+  configserver:
+    cse:
+      install: true

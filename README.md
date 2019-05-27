@@ -1,22 +1,53 @@
-Role Name
-=========
+Ansible ConfigServer Role
+=========================
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+ConfigServer products and free script role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+    macklus:
+      configserver:
+        cmm:
+          install: true
+        cmq:
+          install: true
+        cse:
+          install: true
+        csf:
+          install: true
+          options: {
+            testing: 1,
+            testing_interval: 5,
+            auto_updates: 1,
+            tcp_in: "20,21,22,25,53,80,110,143,443,465,587,993,995",
+            tcp_out: "20,21,22,25,53,80,110,113,443,587,993,995",
+            udp_in: "20,21,53",
+            udp_out: "20,21,53,113,123"
+          }
+          allow: []      
+          deny: []
+          fignore: []
+          ignore: []
+          mignore: []
+          pignore: []
+          rignore: []
+          signore: []
+          suignore: []
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* **macklus.configserver.cmm.install:** Install CMM (true|false)
+* **macklus.configserver.cmq.install:** Install CMQ (true|false)
+* **macklus.configserver.cse.install:** Install CSE (true|false)
+* **macklus.configserver.csf.install:** Install CSF (true|false)
+* **macklus.configserver.csf.options:** Options that should be on csf.conf file (dict of lowercase variable - value)
+* **macklus.configserver.csf.allow:** Config lines for csf.allow file (list of string lines)
+* **macklus.configserver.csf.deny:** Config lines for csf.deny file (list of string lines)
+* **macklus.configserver.csf.fignore:** Config lines for csf.fignore file (list of string lines)
+* **macklus.configserver.csf.mignore:** Config lines for csf.mignore file (list of string lines)
+* **macklus.configserver.csf.pignore:** Config lines for csf.pignore file (list of string lines)
+* **macklus.configserver.csf.rignore:** Config lines for csf.rignore file (list of string lines)
+* **macklus.configserver.csf.signore:** Config lines for csf.signore file (list of string lines)
+* **macklus.configserver.csf.suignore:** Config lines for csf.suignore file (list of string lines)
 
 Example Playbook
 ----------------
@@ -25,14 +56,12 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+        - macklus.configserver/cmm
+        - macklus.configserver/cmq
+        - macklus.configserver/cse
+        - macklus.configserver/csf
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+GPL-3.0-only
