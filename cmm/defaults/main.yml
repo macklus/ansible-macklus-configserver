@@ -1,0 +1,6 @@
+---
+# file: tasks/cmm/defaults/main.yml
+macklus:
+  configserver:
+    cmm:
+      install: true

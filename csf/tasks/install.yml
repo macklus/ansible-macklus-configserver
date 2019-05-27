@@ -1,0 +1,22 @@
+- name: Download csf
+  get_url:
+    url: https://download.configserver.com/csf.tgz
+    dest: /usr/src/csf.tgz
+    mode: 0440
+
+- name: Unarchive
+  unarchive:
+    src: /usr/src/csf.tgz
+    dest: /usr/src/
+    remote_src: yes
+
+- name: Test if compatible
+  command: ./csftest.pl
+  args:
+    chdir: /usr/src/csf
+
+- name: Install
+  command: ./install.sh
+  args:
+    chdir: /usr/src/csf
+    creates: /etc/csf

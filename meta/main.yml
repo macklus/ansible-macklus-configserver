@@ -1,0 +1,21 @@
+galaxy_info:
+  role_name: configserver
+  author: José Pedro Andrés
+  description: ConfigServer products and free script role.
+  company: none
+  license: GPL-3.0-only
+  min_ansible_version: 2.4
+  # https://galaxy.ansible.com/api/v1/platforms/
+  #
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+
+  galaxy_tags: [ 'macklus', 'configserver', 'csf', 'cxs', 'cmm', 'cmq', 'cse', 'debian', 'ubuntu', 'fedora', 'centos']

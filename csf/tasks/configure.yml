@@ -1,0 +1,78 @@
+- name: Configure /etc/csf/csf.conf
+  lineinfile:
+    path: /etc/csf/csf.conf
+    regexp: "^#? *{{ item.key | upper | regex_escape() }} = "
+    line: "{{ item.key | upper }} = \"{{ item.value }}\""
+  with_dict: "{{ macklus.configserver.csf.options }}"
+
+- name: Configure /etc/csf/csf.allow
+  lineinfile:
+    path: /etc/csf/csf.allow
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.allow }}"
+  when: macklus.configserver.csf.allow|length > 0
+
+- name: Configure /etc/csf/csf.deny
+  lineinfile:
+    path: /etc/csf/csf.deny
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.deny }}"
+  when: macklus.configserver.csf.deny|length > 0
+
+- name: Configure /etc/csf/csf.fignore
+  lineinfile:
+    path: /etc/csf/csf.fignore
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.fignore }}"
+  when: macklus.configserver.csf.fignore|length > 0
+
+- name: Configure /etc/csf/csf.ignore
+  lineinfile:
+    path: /etc/csf/csf.ignore
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.ignore }}"
+  when: macklus.configserver.csf.ignore|length > 0
+
+- name: Configure /etc/csf/csf.mignore
+  lineinfile:
+    path: /etc/csf/csf.mignore
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.mignore }}"
+  when: macklus.configserver.csf.mignore|length > 0
+
+- name: Configure /etc/csf/csf.pignore
+  lineinfile:
+    path: /etc/csf/csf.pignore
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.pignore }}"
+  when: macklus.configserver.csf.pignore|length > 0
+
+- name: Configure /etc/csf/csf.rignore
+  lineinfile:
+    path: /etc/csf/csf.rignore
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.rignore }}"
+  when: macklus.configserver.csf.rignore|length > 0
+
+- name: Configure /etc/csf/csf.signore
+  lineinfile:
+    path: /etc/csf/csf.signore
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.signore }}"
+  when: macklus.configserver.csf.signore|length > 0
+
+- name: Configure /etc/csf/csf.suignore
+  lineinfile:
+    path: /etc/csf/csf.suignore
+    regexp: "^#? *{{ item }}"
+    line: "{{ item }}"
+  with_items: "{{ macklus.configserver.csf.suignore }}"
+  when: macklus.configserver.csf.suignore|length > 0

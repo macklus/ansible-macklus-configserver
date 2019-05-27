@@ -1,0 +1,7 @@
+- name: Check if already installed
+  stat:
+    path: /usr/local/cpanel/whostmgr/docroot/cgi/configserver/cse
+  register: cse
+
+- include_tasks: "install.yml"
+  when: not cse.stat.exists and macklus.configserver.cse.install|bool == true

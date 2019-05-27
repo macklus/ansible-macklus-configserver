@@ -1,0 +1,6 @@
+---
+# file: tasks/cmq/defaults/main.yml
+macklus:
+  configserver:
+    cmq:
+      install: true

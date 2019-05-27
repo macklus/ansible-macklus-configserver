@@ -1,0 +1,17 @@
+- name: Download cmm
+  get_url:
+    url: https://download.configserver.com/cmm.tgz
+    dest: /usr/src/cmm.tgz
+    mode: 0440
+
+- name: Unarchive
+  unarchive:
+    src: /usr/src/cmm.tgz
+    dest: /usr/src/
+    remote_src: yes
+
+- name: Install
+  command: ./install.sh
+  args:
+    chdir: /usr/src/cmm
+    creates: /usr/local/cpanel/whostmgr/docroot/cgi/configserver/cmm
