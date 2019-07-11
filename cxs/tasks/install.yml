@@ -1,0 +1,19 @@
+- include_tasks: "{{ ansible_os_family }}.yml"
+
+- name: Download cxs
+  get_url:
+    url: https://download.configserver.com/cxsinstaller.tgz
+    dest: /usr/src/cxsinstaller.tgz
+    mode: 0440
+
+- name: Unarchive
+  unarchive:
+    src: /usr/src/cxsinstaller.tgz
+    dest: /usr/src/
+    remote_src: yes
+
+- name: Install
+  command: ./cxsinstaller.pl
+  args:
+    chdir: /usr/src/
+    creates: /etc/cxs

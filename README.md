@@ -34,7 +34,16 @@ Role Variables
           rignore: []
           signore: []
           suignore: []
-
+        cxs:
+          install: false
+          install_cxswatch: false
+          cxswatch:
+            options: ''
+            maxchild: 3
+            loglevel: 0
+            sleep: 3
+            filemax: 0
+            rateignore: 300
 * **macklus.configserver.cmm.install:** Install CMM (true|false)
 * **macklus.configserver.cmq.install:** Install CMQ (true|false)
 * **macklus.configserver.cse.install:** Install CSE (true|false)
@@ -49,6 +58,9 @@ Role Variables
 * **macklus.configserver.csf.signore:** Config lines for csf.signore file (list of string lines)
 * **macklus.configserver.csf.suignore:** Config lines for csf.suignore file (list of string lines)
 
+For cxs:
+* **macklus.configserver.cxs.install:** Install CXS
+
 Example Playbook
 ----------------
 
@@ -60,6 +72,7 @@ Including an example of how to use your role (for instance, with variables passe
         - macklus.configserver/cmq
         - macklus.configserver/cse
         - macklus.configserver/csf
+        - macklus.configserver/cxs
 
 License
 -------

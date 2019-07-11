@@ -1,0 +1,4 @@
+- name: install required packages
+  apt:
+    name: [ 'sqlite3', 'libdbi-perl', 'libdbd-sqlite3-perl', 'liblinux-inotify2-perl']
+    state: latest

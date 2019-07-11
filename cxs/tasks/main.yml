@@ -1,0 +1,7 @@
+- name: Check if already installed
+  stat:
+    path: /etc/cxs/
+  register: cxs
+
+- include_tasks: "install.yml"
+  when: not cxs.stat.exists and macklus.configserver.cxs.install|bool == true
