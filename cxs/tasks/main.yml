@@ -1,7 +1,17 @@
+---
+# file: cxs/tasks/main.yml
 - name: Check if already installed
   stat:
     path: /etc/cxs/
   register: cxs
 
+- name: check /etc/cxs/cxs.ignore already installed
+  stat: 
+    path: /etc/cxs/cxs.ignore
+  register: etc_cxs_cxs_ignore
+
 - include_tasks: "install.yml"
   when: not cxs.stat.exists and macklus.configserver.cxs.install|bool == true
+
+- include_tasks: "cxswatch.yml"
+  when: macklus.configserver.cxs.install|bool == true and macklus.configserver.cxs.install_cxswatch|bool == true and etc_cxs_cxs_ignore.stat.exists == False

@@ -1,0 +1,18 @@
+#!/bin/sh
+###############################################################################
+# Copyright 2009-2017, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The option --Wstart MUST be used on the cxs command line here
+#
+# Examples (only use ONE line for cxs scanning):
+#/usr/sbin/cxs --Wstart --allusers --mail root
+#/usr/sbin/cxs --Wstart --allusers --www --mail root --quarantine /home/safe/ --qoptions Mv --Wadd /etc/cxs/cxs.wadd
+#
+# We would recommend using --qoptions Mv initially if you use --quarantine
+# otherwise you might find cxs quarantining files that you do not want to.
+# For example, you probably do NOT want to quarantine all script files (T)!
+#
+
+/usr/sbin/cxs --ignore /etc/cxs/cxs.ignore {% if macklus.configserver.cxs.cxswatch.options != '' %}--options {{ macklus.configserver.cxs.cxswatch.options }}{% endif %} --Wstart --allusers --www --smtp --mail {{ macklus.configserver.cxs.cxswatch.mail }} --Wmaxchild {{ macklus.configserver.cxs.cxswatch.maxchild }} --Wloglevel {{ macklus.configserver.cxs.cxswatch.loglevel }} --Wsleep {{ macklus.configserver.cxs.cxswatch.sleep }} --filemax {{ macklus.configserver.cxs.cxswatch.filemax }} --Wrateignore {{ macklus.configserver.cxs.cxswatch.rateignore }} --script /etc/cxs/cxs-fixer

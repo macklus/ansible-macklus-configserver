@@ -1,0 +1,74 @@
+###############################################################################
+# Copyright 2009-2017, Way to the Web Limited
+# URL: http://www.configserver.com
+# Email: sales@waytotheweb.com
+###############################################################################
+# The following is a list of files, directories, users and regex matches that
+# cxs will ignore.
+#
+# You must use the following format:
+#
+# user:    - ignore user
+# file:    - ignore file
+# dir:     - ignore directory
+# sym:     - ignore symlink
+# script:  - ignore web script (ModSecurity hook)
+#
+# puser:   - regex of users to ignore
+# pfile:   - regex of files to ignore
+# pdir:    - regex of directories to ignore
+# psym:    - regex of symlinks to ignore
+# pscript: - regex of web script to ignore (ModSecurity hook)
+#
+# The following do not apply to web script uploads via ModSecurity hook:
+# hfile:   - ignore file relative to a users homedir
+# hdir:    - ignore directory relative to a users homedir
+# hsym:    - ignore symlink relative to a users homedir
+#
+# match:   - ignore regex pattern match
+# md5sum:  - ignore file md5sum
+# fp:      - ignore fingerprint match
+#
+# The following only apply to web and ftp script uploads:
+# ip:      - ignore uploads from IP address
+#
+# You can include additional entries using external files with:
+# Include /path/to/cxs.altignore
+#
+pfile:vendor/pimple/pimple/ext/pimple/pimple.c
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/cwebp-fbsd
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/cwebp-linux
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/cwebp-sol
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/cwebp.exe
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/gifsicle-fbsd
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/gifsicle-linux
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/gifsicle-sol
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/gifsicle.exe
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/jpegtran-fbsd
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/jpegtran-linux
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/jpegtran-sol
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/jpegtran.exe
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/optipng-fbsd
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/optipng-linux
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/optipng-sol
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/optipng.exe
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/pngquant-fbsd
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/pngquant-linux
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/pngquant-sol
+pfile:.*/wp-content/plugins/ewww-image-optimizer/binaries/pngquant.exe
+pfile:.*/wp-content/plugins/tidy-up/tidy.exe
+pfile:.*/wp-content/plugins/tidy-up/tidy.freebsd
+pfile:.*/wp-content/plugins/tidy-up/tidy.linux
+pfile:.*/wp-includes/js/mediaelement/silverlightmediaelement.xap
+pfile:.*/wp-includes/js/plupload/plupload.silverlight.xap
+pfile:.*/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/nextgen_addgallery_page/static/plupload-2.1.1/Moxie.xap
+pfile:.*/bower_components/eonasdan-bootstrap-datetimepicker/src/nuget/NuGet.exe
+pfile:.*/wp-content/plugins/sitepress-multilingual-cms/vendor/twig/twig/ext/twig/twig.c
+pfile:.*/vendor/google/protobuf/benchmarks/util/gogo_data_scrubber.cc
+pfile:.*/vendor/google/protobuf/benchmarks/util/protoc-gen-gogoproto.cc
+pfile:.*/vendor/google/protobuf/conformance/third_party/jsoncpp/jsoncpp.cpp
+pfile:.*/vendor/google/protobuf/examples/add_person.cc
+pfile:.*/vendor/google/protobuf/examples/list_people.cc
+pfile:.*/vendor/google/protobuf/objectivec/Tests/CocoaPods/OSXCocoaPodsTester/OSXCocoaPodsTester/main.m
+pfile:.*/vendor/google/protobuf/objectivec/Tests/CocoaPods/iOSCocoaPodsTester/iOSCocoaPodsTester/main.m
+pfile:.*/vendor/google/protobuf/php/ext/google/protobuf/*
