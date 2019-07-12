@@ -1,0 +1,28 @@
+#!/usr/bin/python
+#
+# CXS fixer script
+#
+
+import sys
+import os
+
+# Parameters:
+# - filename
+# - option triggered
+# - message reported
+# - account name (if a manual scan and --allusers or --user [user] is used)
+# - IP address (Only available via ModSecurity and pure-ftpd hooks)
+
+filename = sys.argv[1]
+option = sys.argv[2]
+message = sys.argv[3]
+account = sys.argv[4]
+ip = sys.argv[5]
+
+if option == 'w':
+  os.chmod(filename, 0755)
+#elif a == '2':
+#    print('2a')
+#else:
+  # Do nothing
+  #print('')

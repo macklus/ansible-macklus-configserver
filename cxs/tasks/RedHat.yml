@@ -1,3 +1,5 @@
+---
+# file: cxs/tasks/RedHat.yml
 - name: install required packages
   yum:
     name: ['sqlite', 'perl-DBI', 'perl-DBD-SQLite']

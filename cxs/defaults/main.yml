@@ -1,12 +1,14 @@
 ---
 # file: tasks/cxs/defaults/main.yml
-cxs:
-  install: false
-  install_cxswatch: false
-  cxswatch:
-    options: ''
-    maxchild: 3
-    loglevel: 0
-    sleep: 3
-    filemax: 0
-    rateignore: 300
+macklus:
+  configserver:
+    cxs:
+      install: false
+      install_cxswatch: false
+      cxswatch:
+        options: 'wW'
+        maxchild: 3
+        loglevel: 0
+        sleep: 3
+        filemax: 0
+        rateignore: 300

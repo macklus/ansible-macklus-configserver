@@ -1,0 +1,44 @@
+---
+# file: cxs/tasks/cxswatch.yml
+- name: copy /etc/cxs/cxs.ignore
+  command: mv /etc/cxs/cxs.ignore.example /etc/cxs/cxs.ignore
+
+- name: include /etc/cxs/cxs.ignore.included
+  template:
+    src: templates/cxs.ignore.included.j2
+    dest: /etc/cxs/cxs.ignore.included
+    owner: root
+    group: root
+    mode: "u=rwx,g=r,o=r"
+
+- name: Add line for /etc/cxs/cxs.ignore.included
+  lineinfile:
+    path: /etc/cxs/cxs.ignore
+    regexp: '^Include \/etc\/cxs\/cxs.ignore.included'
+    line: 'Include /etc/cxs/cxs.ignore.included'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Create /etc/cxs/cxs-fixer
+  template:
+    src: templates/cxs-fixer.j2
+    dest: /etc/cxs/cxs-fixer
+    owner: root
+    group: root
+    mode: "u=rwx,g=rx,o=rx"
+
+- name: Configure cxswatch
+  template:
+    src: templates/cxswatch.sh.j2
+    dest: /etc/cxs/cxswatch.sh
+    owner: root
+    group: root
+    mode: "u=rwx,g=rx,o=rx"
+
+- name: Make sure cxswatch is enable and running
+  systemd:
+    name: cxswatch
+    state: started
+    enabled: yes
+
