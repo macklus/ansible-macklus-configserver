@@ -2,5 +2,5 @@
 # file: cxs/tasks/Debian.yml
 - name: install required packages
   apt:
-    name: [ 'sqlite3', 'libdbi-perl', 'libdbd-sqlite3-perl', 'liblinux-inotify2-perl']
+    name: [ 'libcompress-raw-zlib-perl', 'libarchive-tar-wrapper-perl', 'libarchive-zip-perl', 'libwww-perl', 'liblwp-protocol-https-perl', 'libcgi-pm-perl', 'sqlite3', 'libdbi-perl', 'libdbd-sqlite3-perl', 'liblinux-inotify2-perl']
     state: latest

@@ -2,4 +2,4 @@
 # file: cxs/tasks/RedHat.yml
 - name: install required packages
   yum:
-    name: ['sqlite', 'perl-DBI', 'perl-DBD-SQLite']
+    name: ['perl-libwww-perl.noarch', 'perl-LWP-Protocol-https.noarch', 'perl-Archive-Tar.noarch', 'perl-Archive-Zip.noarch', 'perl-Linux-Inotify2', 'perl-Compress-Zlib', 'sqlite', 'perl-DBI', 'perl-DBD-SQLite']
