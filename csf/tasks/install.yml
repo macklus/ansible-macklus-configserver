@@ -1,3 +1,6 @@
+# file: csf/tasks/install.yml
+- include_tasks: "{{ ansible_os_family }}.yml"
+
 - name: Download csf
   get_url:
     url: https://download.configserver.com/csf.tgz
@@ -10,6 +13,42 @@
     dest: /usr/src/
     remote_src: yes
 
+#
+# Check if we are using HestiaCP and rename desired files
+#
+- name: Check if we are using HestiaCP
+  stat:
+    path: /usr/local/hestia/
+  register: hestia
+
+- name: Adapt CSF to HestiaCP
+  block:
+  - name: rename (step 1)
+    shell: find . -type f -exec sed -i 's/VESTA/HESTIA/g' {} \;
+    args:
+      chdir: /usr/src/csf/
+
+  - name: rename (step 2)
+    shell: find . -type f -exec sed -i 's/Vesta/Hestia/g' {} \;
+    args:
+      chdir: /usr/src/csf/
+
+  - name: rename (step 3)
+    shell: find . -type f -exec sed -i 's/vesta/hestia/g' {} \;
+    args:
+      chdir: /usr/src/csf/
+
+  - name: rename (step 4)
+    shell: rename 's/VESTA/HESTIA/' *
+    args:
+      chdir: /usr/src/csf/
+
+  - name: rename (step 4)
+    shell: rename 's/vesta/hestia/' *
+    args:
+      chdir: /usr/src/csf/
+  when: hestia.stat.exists
+
 - name: Test if compatible
   command: ./csftest.pl
   args:
@@ -20,3 +59,15 @@
   args:
     chdir: /usr/src/csf
     creates: /etc/csf
+
+- name: Start and enable csf
+  service:
+    name: csf
+    state: started
+    enabled: yes
+
+- name: Start and enable lfd
+  service:
+    name: lfd
+    state: started
+    enabled: yes

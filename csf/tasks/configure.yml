@@ -5,6 +5,16 @@
     line: "{{ item.key | upper }} = \"{{ item.value }}\""
   with_dict: "{{ macklus.configserver.csf.options }}"
 
+#
+# Force  on Debian
+#
+- name: Force SYSTEMCTL on Ubuntu
+  lineinfile:
+    path: /etc/csf/csf.conf
+    regexp: "^#SYSTEMCTL = "
+    line: "SYSTEMCTL = \"/bin/systemctl\""
+  when: ansible_os_family == "Debian"
+
 - name: Configure /etc/csf/csf.allow
   lineinfile:
     path: /etc/csf/csf.allow

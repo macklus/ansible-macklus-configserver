@@ -1,0 +1,6 @@
+---
+# file: csf/tasks/Debian.yml
+- name: install required packages
+  apt:
+    name: [ 'rename']
+    state: latest
